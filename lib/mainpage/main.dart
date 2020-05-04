@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertestapp/mainpage/listDPCM.dart';
 
-import 'colors.dart';
+import '../colors.dart';
 import 'mainDrawer.dart';
 
 void main() => runApp(MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           drawer: Drawer(
             child:  MainPageDrawer(),
           ),
+          body: ListDPCM(),
 
         )
     );
