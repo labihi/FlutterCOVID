@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluttertestapp/mainpage/main.dart';
+import 'package:fluttertestapp/main.dart';
 
 import '../colors.dart';
 

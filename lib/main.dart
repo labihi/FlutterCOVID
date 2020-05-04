@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertestapp/mainpage/listDPCM.dart';
 
-import '../colors.dart';
-import 'mainDrawer.dart';
+import 'colors.dart';
+import 'mainpage/mainDrawer.dart';
 
 
 void main(){

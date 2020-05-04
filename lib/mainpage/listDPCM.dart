@@ -27,7 +27,7 @@ class ListDPCM extends StatelessWidget{
 
     HttpClient client = new HttpClient();
     client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
-    var request = await client.getUrl(Uri.parse('https://federicocapece.dev/'));
+    var request = await client.getUrl(Uri.parse('https://federicocapece.dev/api/dpcm'));
     var response = await request.close();
 
     log(response.headers.toString());
