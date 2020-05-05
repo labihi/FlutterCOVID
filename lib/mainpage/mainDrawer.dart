@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluttertestapp/main.dart';
-
 import '../colors.dart';
 
 class MainPageDrawer extends StatelessWidget{
