@@ -10,13 +10,13 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'MyDecreto',
         theme: ThemeData(
           primarySwatch: mainSwatch,
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: Text("WRYYYY"),
+            title: Text("Homepage"),
             actions: <Widget>[
               Icon(Icons.search)
             ],

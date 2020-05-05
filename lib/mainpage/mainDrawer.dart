@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertestapp/settings/settingPage.dart';
 
 import '../colors.dart';
 
@@ -12,7 +13,7 @@ class MainPageDrawer extends StatelessWidget{
           decoration: BoxDecoration(
               color: mainSwatch
           ),
-          child: Text("KEBAB",
+          child: Text("MyDecreto",
             style: TextStyle(
               color: Colors.white,
               fontSize: 24
@@ -22,10 +23,18 @@ class MainPageDrawer extends StatelessWidget{
         ListTile(
           title: Text("Impostazioni"),
           leading: Icon(Icons.settings),
+          onTap: () {
+            Navigator.pop(context);
+            openPage(context);
+          },
         ),
         ListTile(
-          title: Text("NIGERUNDAYO"),
-          leading: Icon(Icons.exit_to_app),
+          title: Text("Informazioni"),
+          leading: Icon(Icons.info),
+          onTap: () {
+            Navigator.pop(context);
+
+          },
         )
       ],
     );
