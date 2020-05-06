@@ -14,26 +14,32 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: const Text('Impostazioni'),
       ),
-      body: ListView(
-          children: <Widget>[
-            ListTile(
+      body: new CustomScrollView(
+        slivers: [
+          new SliverToBoxAdapter(
+            child:  ListTile(
               leading: Icon(Icons.map),
-              title: Text('Regioni'),
-
-              ),
-            ListView.separated(
-              itemCount: regionList.length,
-              itemBuilder: widgetBuilder,
-              separatorBuilder: (context, index) =>  Divider(),
+              title: Text("Regioni"),
             ),
-          ]
+
+          ),
+          new SliverList(
+            delegate: new SliverChildListDelegate(
+              new List<Widget>.generate(regionList.length, (int index) {
+                return ListTile(
+                  title: Text(regionList[index]),
+                );
+              }),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget widgetBuilder(BuildContext context, int index){
       return ListTile (
-        title: Text('BESTIA'),
+        title: Text(regionList[index]),
       );
   }
 }
