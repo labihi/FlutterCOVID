@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertestapp/settings/settingPage.dart';
 
@@ -25,7 +24,7 @@ class MainPageDrawer extends StatelessWidget{
           leading: Icon(Icons.settings),
           onTap: () {
             Navigator.pop(context);
-            openPage(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
           },
         ),
         ListTile(
