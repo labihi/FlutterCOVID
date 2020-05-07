@@ -1,37 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../global.dart';
+
 class SettingsPage extends StatefulWidget{
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  List<String> regionList = [
-    "Abruzzo",
-    "Basilicata",
-    "Calabria",
-    "Campania",
-    "Emilia-Romagna",
-    "Friuli-Venezia Giulia",
-    "Lazio",
-    "Liguria",
-    "Lombardia",
-    "Marche",
-    "Molise",
-    "Piemonte",
-    "Puglia",
-    "Sardegna",
-    "Sicilia",
-    "Toscana",
-    "Trentino-Alto Adige",
-    "Umbria",
-    "Valle d'Aosta",
-    "Veneto"
-  ];
+  SharedPreferences preferences;
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then(
+            (prefs){
+              setState(() {
+                this.preferences = prefs;
+              });
+            }
+    );
+
+  }
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Impostazioni'),
@@ -43,7 +37,6 @@ class _SettingsPageState extends State<SettingsPage> {
               leading: Icon(Icons.map),
               title: Text("Regioni"),
             ),
-
           ),
           new SliverList(
             delegate: SliverChildListDelegate(generateRegionList()),
@@ -55,17 +48,17 @@ class _SettingsPageState extends State<SettingsPage> {
 
   //generate a List of region widget
   List<Widget> generateRegionList(){
-    return new List<Widget>.generate(regionList.length, (index) => generateRegionTile(index));
+    return new List<Widget>.generate(humanReadableRegions.length, (index) => generateRegionTile(index));
   }
 
   //generate a single region switch from the region index
   Widget generateRegionTile(index) {
     return SwitchListTile(
-      title: Text(regionList[index]),
-      value: true,
+      title: Text(humanReadableRegions[regionKeys[index]]),
+      value: preferences?.getBool(regionKeys[index]) ?? false,
       onChanged: (bool value) {
-        setState(() async {
-          //TODO: set a local state, on pop set all the local states to the SharedPreferences
+        setState(() {
+          preferences.setBool(regionKeys[index], value);
         });
       },
     );
