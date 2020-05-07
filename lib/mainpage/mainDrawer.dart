@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertestapp/settings/settingPage.dart';
 
-import '../colors.dart';
+import '../global.dart';
 
 class MainPageDrawer extends StatelessWidget{
   @override

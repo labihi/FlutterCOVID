@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../colors.dart';
+import '../global.dart';
 import 'listDPCM.dart';
 import 'mainDrawer.dart';
 
