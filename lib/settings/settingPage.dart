@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget{
   @override
@@ -6,7 +7,28 @@ class SettingsPage extends StatefulWidget{
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  List<String> regionList = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna", "Friuli-Venezia Giulia", "Lazio", "Liguria", "Lombardia", "Marche", "Molise", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "Trentino-Alto Adige", "Umbria", "Valle d'Aosta", "Veneto"];
+  List<String> regionList = [
+    "Abruzzo",
+    "Basilicata",
+    "Calabria",
+    "Campania",
+    "Emilia-Romagna",
+    "Friuli-Venezia Giulia",
+    "Lazio",
+    "Liguria",
+    "Lombardia",
+    "Marche",
+    "Molise",
+    "Piemonte",
+    "Puglia",
+    "Sardegna",
+    "Sicilia",
+    "Toscana",
+    "Trentino-Alto Adige",
+    "Umbria",
+    "Valle d'Aosta",
+    "Veneto"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +46,29 @@ class _SettingsPageState extends State<SettingsPage> {
 
           ),
           new SliverList(
-            delegate: new SliverChildListDelegate(
-              new List<Widget>.generate(regionList.length, (int index) {
-                return ListTile(
-                  title: Text(regionList[index]),
-                );
-              }),
-            ),
+            delegate: SliverChildListDelegate(generateRegionList()),
           ),
         ],
       ),
     );
   }
 
-  Widget widgetBuilder(BuildContext context, int index){
-      return ListTile (
-        title: Text(regionList[index]),
-      );
+  //generate a List of region widget
+  List<Widget> generateRegionList(){
+    return new List<Widget>.generate(regionList.length, (index) => generateRegionTile(index));
   }
+
+  //generate a single region switch from the region index
+  Widget generateRegionTile(index) {
+    return SwitchListTile(
+      title: Text(regionList[index]),
+      value: true,
+      onChanged: (bool value) {
+        setState(() async {
+          //TODO: set a local state, on pop set all the local states to the SharedPreferences
+        });
+      },
+    );
+  }
+
 }
