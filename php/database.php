@@ -11,6 +11,11 @@ if ($conn->connect_error) {
 }
 
 function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
+    if($region == NULL){
+        $region = 'null';
+    }else{
+        $region = "'$region'";
+    }
     global $conn;
     global $debug;
     /*print('Title: '.$dpcmTitle.
