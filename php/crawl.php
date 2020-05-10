@@ -17,7 +17,7 @@ foreach(scandir("crawler") as $crawler){
 include("database.php");
 
 //start GovernoIt
-//GovernoIt::parse();
+GovernoIt::parse();
 Valledaosta::parse();
 $conn->close();
 

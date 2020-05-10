@@ -21,7 +21,7 @@ class Valledaosta{
             //cerco la data maggiore
             $maxDate = Valledaosta::findMaxDate($res);
 
-            tryUpload($url,$maxDate,$text,'valle',[]);
+            tryUpload($url,$maxDate,trim($text),'valle',[]);
         }
     }
 
