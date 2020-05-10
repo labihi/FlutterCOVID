@@ -30,7 +30,7 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
     if ($result->num_rows == 0) {
         $dpcmTitle = $conn -> real_escape_string($dpcmTitle);
         $dpcmDesc = $conn -> real_escape_string($dpcmDesc);
-        $sql = "INSERT INTO dpcm (url, title, description, region) VALUES ('$dpcmURL', '$dpcmTitle', '$dpcmDesc',null)";
+        $sql = "INSERT INTO dpcm (url, title, description, region) VALUES ('$dpcmURL', '$dpcmTitle', '$dpcmDesc',$region)";
         
         //if i cannot create the dpcm it's useless to create the articles, so i just close the function
         if ($conn->query($sql) === FALSE) return;
