@@ -13,7 +13,6 @@ class Valledaosta{
             //ottengo testo e url
             $text = $elements[$i]->getElementsByTagName ("td",1)->plaintext;
             $url    = $elements[$i]->getElementsByTagName ("td",2)->children(0)->href;
-            echo "G: ". $text . "<br>";
             
             //cerco le date
             preg_match("/[^0-9][0-9]{1,2} \w* [0-9]{2,4}/",$text, $res);

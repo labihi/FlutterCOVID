@@ -64,9 +64,6 @@ class GovernoIt{
                 $partLink = 'https://www.gazzettaufficiale.it'.$partLink;
             $partText = file_get_html($partLink)->find('pre')[0]->innertext;
             $pos = strpos($partText, "\n");
-            echo "pene ";
-            var_dump ($pos);
-            echo "<br>";
             $parts[trim($partName)] = $partText;
         }
         return $parts;
