@@ -13,15 +13,20 @@ class Valledaosta{
             //ottengo testo e url
             $text = $elements[$i]->getElementsByTagName ("td",1)->plaintext;
             $url    = $elements[$i]->getElementsByTagName ("td",2)->children(0)->href;
-            $url = get_headers($url);
-            var_dump($url);
+            $title = get_headers($url);
+            $title = $title[5];
+            preg_match('/"([^"]+)"/',$title,$title);
+            $title = $title[1];
+            $title=substr($title,0,-4);
+            $title=str_replace('_',' ',$title);
+            echo $title;
             //cerco le date
             preg_match("/[^0-9][0-9]{1,2} \w* [0-9]{2,4}/",$text, $res);
 
             //cerco la data maggiore
             $maxDate = Valledaosta::findMaxDate($res);
 
-            tryUpload($url,$maxDate,trim($text),'valle',[]);
+            tryUpload($url,$title,trim($text),'valle',[]);
         }
     }
 
