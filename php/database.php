@@ -24,8 +24,8 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
     '<br>TEXT: <pre>');
     print('</pre><br>');*/
     $dpcmURL = html_entity_decode($dpcmURL);
-    $dpcmTitle = html_entity_decode($dpcmDesc);
-    $dpcmDesc = html_entity_decode($dpcmTitle);
+    $dpcmTitle = html_entity_decode($dpcmTitle);
+    $dpcmDesc = html_entity_decode($dpcmDesc);
     //checking if the dpcm is already on the database
     $dpcmURL = $conn -> real_escape_string($dpcmURL);
     $sql = "SELECT id FROM dpcm WHERE url = '$dpcmURL'";
