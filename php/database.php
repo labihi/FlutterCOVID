@@ -23,7 +23,9 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
     '<br>Desc: '.$dpcmDesc.
     '<br>TEXT: <pre>');
     print('</pre><br>');*/
-    
+    $dpcmURL = html_entity_decode($dpcmURL);
+    $dpcmTitle = html_entity_decode($dpcmDesc);
+    $dpcmDesc = html_entity_decode($dpcmTitle);
     //checking if the dpcm is already on the database
     $dpcmURL = $conn -> real_escape_string($dpcmURL);
     $sql = "SELECT id FROM dpcm WHERE url = '$dpcmURL'";
@@ -50,7 +52,7 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
     //upload the articles
     foreach ($articleParts as $title => $text) {
         $title = $conn -> real_escape_string($title);
-
+        $title = html_entity_decode ($title);
         //skip this article if it already exists
         $sql = "SELECT dpcm_id FROM article WHERE dpcm_id = '$dcpmID' AND title = '$title'";
         if($conn->query($sql)->num_rows > 0){
@@ -61,6 +63,7 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
         print("UPLOADING ARTICLE ".$title." (".$dcpmID.")<BR>");        
         //otherwise upload it
         $text = $conn -> real_escape_string($text);
+        $text = html_entity_decode($text);
         $sql = "INSERT INTO article (dpcm_id, title, text) VALUES ($dcpmID, '$title', '$text')";
         $conn->query($sql);
     }
