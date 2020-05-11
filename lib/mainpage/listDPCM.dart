@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertestapp/api/api.dart';
+import 'package:fluttertestapp/dpcmpage/DPCMPagePDF.dart';
 import 'package:fluttertestapp/dpcmpage/dpcmPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -67,6 +68,7 @@ class ListDCPMState extends State<ListDPCM>{
   void openDPCM(dynamic dpcm) {
     if(dpcm['url'].toString().endsWith('.pdf')){
       log("PDF");
+      Navigator.push(context, MaterialPageRoute(builder: (context) => DPCMPagePDF(dpcm['url'])));
     }else{
       log("NOTAPDF");
       Navigator.push(context, MaterialPageRoute(builder: (context) => DPCMPage(dpcm['id'])));
