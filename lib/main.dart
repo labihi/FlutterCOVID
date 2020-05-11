@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertestapp/global.dart';
 import 'package:fluttertestapp/mainpage/mainPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main(){
-  runApp(MyDecreto());
+  //loading user settings, then starting the app;
+  SharedPreferences.getInstance().then((pref) {
+      preferences = pref;
+      runApp(MyDecreto());
+  });
 }
 
 class MyDecreto extends StatelessWidget {
