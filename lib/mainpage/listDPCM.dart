@@ -49,7 +49,7 @@ class ListDCPMState extends State<ListDPCM>{
       child: ListView.separated(
           itemCount: dpcmList.length,
           itemBuilder: buildWidgetFromDPCM,
-        separatorBuilder: (context, index) =>  Divider(),
+          separatorBuilder: (context, index) =>  Divider(),
       ),
     );
   }

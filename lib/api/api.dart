@@ -8,8 +8,6 @@ class API{
 
   static Future<List<dynamic>> loadDPCMs() async {
     List<dynamic> downloadedDPCM = [];
-
-    log("GETTING DPCM!!!");
     //ADDING NULL DPCM
     log("DOWNLOADING NULL DPCM");
     String response = (await http.get('https://federicocapece.dev/api/dpcm')).body;
