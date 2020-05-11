@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertestapp/mainpage/listDPCM.dart';
+import 'package:fluttertestapp/mainpage/mainPage.dart';
 
 //TODO: discover if variables are shared between multiple imports
 
@@ -28,3 +30,5 @@ Map<String, String> humanReadableRegions = {
 };
 
 List<String> regionKeys = humanReadableRegions.keys.toList();
+
+MainPage mainPage = MainPage();

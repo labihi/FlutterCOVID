@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,12 +22,10 @@ class _SettingsPageState extends State<SettingsPage> {
               });
             }
     );
-
   }
 
   @override
    Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Impostazioni'),
@@ -62,6 +62,13 @@ class _SettingsPageState extends State<SettingsPage> {
         });
       },
     );
+  }
+
+  @override
+  void dispose() {
+    log("DISPOSE");
+    mainPage.listDPCM.state.loadDPCMs();
+    super.dispose();
   }
 
 }

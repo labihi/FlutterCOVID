@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertestapp/global.dart';
 import 'package:fluttertestapp/settings/settingPage.dart';
 
-import '../global.dart';
-
 class MainPageDrawer extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -14,8 +14,8 @@ class MainPageDrawer extends StatelessWidget{
           ),
           child: Text("MyDecreto",
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 24
+                color: Colors.white,
+                fontSize: 24
             ),
           ),
         ),
@@ -38,4 +38,5 @@ class MainPageDrawer extends StatelessWidget{
       ],
     );
   }
+
 }
