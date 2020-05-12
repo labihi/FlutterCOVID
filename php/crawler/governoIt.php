@@ -7,31 +7,35 @@ class GovernoIt{
     static function parse($debug = false){
         $html = file_get_html('http://www.governo.it/it/coronavirus-normativa');
         $elements = $html->find('dl', 0)->children();
-
-        for ($i= count($elements)-1; $i >=0; $i--) { 
-            if($elements[$i]->tag == "dt"){
+        $inc=0;
+        for ($i= count($elements)-2; $i>=0 ;$i+= $inc){
+            if($i % 2 == 0){
+              //Titolo
                 $articleA       = $elements[$i]->find('a',0);
                 $articleTitle   = $articleA->plaintext;
                 $articleURL     = $articleA->href;
                 
                 if(strpos($articleURL,'://') === FALSE)
-                    $articleURL = 'http://www.governo.it'.$articleURL;
-
+                    $articleURL = 'http://www.governo.it'.$articleURL;  
                 if(strpos(strtolower($articleTitle),'dpcm') === FALSE){
                     if($debug) print("SKIPPING: ".strtolower($articleTitle).'<br><br>');
                     $i++;
                 }
+                $inc = 2;
             }else{
+                //Descrizione
                 $articleDesc = $elements[$i]->plaintext;
                 $articleParts = [];
-
                 if(strpos($articleURL,'.pdf') === FALSE){
                     $articleParts = GovernoIt::parseArticle($articleURL, $debug);
                 }
-
                 tryUpload($articleURL, $articleTitle, $articleDesc, null, $articleParts);
+                $inc = -3;
             }
-        }
+            if ($i==1){
+                $i = -1;
+            }
+          }
     }
 
     static function parseArticle($articleURL, $debug = false){
