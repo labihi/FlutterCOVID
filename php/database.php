@@ -72,7 +72,7 @@ function tryUpload($dpcmURL, $dpcmTitle, $dpcmDesc, $region, $articleParts){
 function getDPCMByID($id){
     global $conn;
     $id = $conn->real_escape_string($id);
-    $sql = "SELECT * FROM dpcm WHERE id = '$id'";
+    $sql = "SELECT * FROM dpcm WHERE id = '$id' ORDER BY timestamp DESC";
 
     $result = selectAndFetch($sql);
     return count($result) == 1 ? $result[0] : $result;
