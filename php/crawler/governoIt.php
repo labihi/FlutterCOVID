@@ -51,6 +51,7 @@ class GovernoIt{
         $code = $urlParts[count($urlParts)-2];
         $date = $urlParts[count($urlParts)-5].'-'.$urlParts[count($urlParts)-4].'-'.$urlParts[count($urlParts)-3].'-';
         $treeLink = 'https://www.gazzettaufficiale.it/atto/serie_generale/caricaAlberoArticoli/originario?atto.dataPubblicazioneGazzetta='.$date.'&atto.codiceRedazionale='.$code;
+        echo $treeLink."<br>";
         $articleTree = file_get_html($treeLink)->find('li a');
         $parts = [];
         if(count($articleTree) == 0){
