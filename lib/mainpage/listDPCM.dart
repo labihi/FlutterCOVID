@@ -66,7 +66,7 @@ class ListDCPMState extends State<ListDPCM>{
   }
 
   void openDPCM(dynamic dpcm) {
-    if(dpcm['url'].toString().endsWith('.pdf')){
+    if(dpcm['url'].toString().endsWith('.pdf')||dpcm['region']=='valle'){
       log("PDF");
       Navigator.push(context, MaterialPageRoute(builder: (context) => DPCMPagePDF(dpcm['url'])));
     }else{
