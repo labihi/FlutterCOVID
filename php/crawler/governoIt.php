@@ -21,7 +21,7 @@ class GovernoIt{
                     if($debug) print("SKIPPING: ".strtolower($articleTitle).'<br><br>');
                     $i++;
                 }
-                $inc = -2;
+                $inc = 1;
             }else{
                 //Descrizione
                 $articleDesc = $elements[$i]->plaintext;
