@@ -8,9 +8,11 @@ class GovernoIt{
         $html = file_get_html('http://www.governo.it/it/coronavirus-normativa');
         $elements = $html->find('dl', 0)->children();
         $inc=0;
-        for ($i= count($elements)-2; $i>=0 ;$i+= $inc){
+        //var_dump($elements);
+        for ($i = count($elements)-2; $i>=0 ;$i+= $inc){
             if($i % 2 == 0){
               //Titolo
+                echo $i."<br>";
                 $articleA       = $elements[$i]->find('a',0);
                 $articleTitle   = $articleA->plaintext;
                 $articleURL     = $articleA->href;
@@ -19,7 +21,7 @@ class GovernoIt{
                     $articleURL = 'http://www.governo.it'.$articleURL;  
                 if(strpos(strtolower($articleTitle),'dpcm') === FALSE){
                     if($debug) print("SKIPPING: ".strtolower($articleTitle).'<br><br>');
-                    $i++;
+                    //$i++;
                 }
                 $inc = 1;
             }else{
@@ -50,7 +52,6 @@ class GovernoIt{
         $date = $urlParts[count($urlParts)-5].'-'.$urlParts[count($urlParts)-4].'-'.$urlParts[count($urlParts)-3].'-';
         $treeLink = 'https://www.gazzettaufficiale.it/atto/serie_generale/caricaAlberoArticoli/originario?atto.dataPubblicazioneGazzetta='.$date.'&atto.codiceRedazionale='.$code;
         $articleTree = file_get_html($treeLink)->find('li a');
-
         $parts = [];
         if(count($articleTree) == 0){
             $singleArticleLink = 'https://www.gazzettaufficiale.it/atto/serie_generale/caricaArticoloDefault/originario?atto.dataPubblicazioneGazzetta='.$date.'&atto.codiceRedazionale='.$code.'&atto.tipoProvvedimento=';
