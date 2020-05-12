@@ -8,7 +8,7 @@ class GovernoIt{
         $html = file_get_html('http://www.governo.it/it/coronavirus-normativa');
         $elements = $html->find('dl', 0)->children();
 
-        for ($i=0; $i < count($elements); $i++) { 
+        for ($i= count($elements)-1; $i >=0; $i--) { 
             if($elements[$i]->tag == "dt"){
                 $articleA       = $elements[$i]->find('a',0);
                 $articleTitle   = $articleA->plaintext;

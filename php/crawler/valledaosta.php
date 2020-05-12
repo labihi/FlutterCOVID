@@ -9,7 +9,7 @@ class Valledaosta{
         $html = file_get_html('https://www.regione.vda.it/pressevda/Eventi/decreti_ordinanze_i.aspx');
         $elements = $html->find('tbody',0)->children();
 
-        for($i=0; $i < count($elements); $i++){
+        for($i= count($elements)-1; $i >=0; $i--){
             //ottengo testo e url
             $text = $elements[$i]->getElementsByTagName ("td",1)->plaintext;
             $url    = $elements[$i]->getElementsByTagName ("td",2)->children(0)->href;
